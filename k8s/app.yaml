@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app
+
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node-app-container
+          image: us-central1-docker.pkg.dev/swift-radar-399606/my-repo/node-app
+          ports:
+            - containerPort: 3000
+          env:
+            - name: WEBport
+              value: "3000"
+            - name: DBhosts
+              # value: "mongo-0.mongo:27017,mongo-1.mongo:27017,mongo-2.mongo:27017"
+              # "mongodb://mongo-0.mongo,mongo-1.mongo,mongo-2.mongo:27017/dbname_?"
+              value: mongo-service:27017
+            - name: DBuser
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-credentials
+                  key: username
+            - name: DBpass
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-credentials
+                  key: password
+

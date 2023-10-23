@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"GKE_module","Source":"./GKE","Dir":"GKE"},{"Key":"IAM_module","Source":"./IAM","Dir":"IAM"},{"Key":"compute_module","Source":"./Compute","Dir":"Compute"},{"Key":"network_module","Source":"./Network","Dir":"Network"},{"Key":"storage_module","Source":"./Storage","Dir":"Storage"}]}
